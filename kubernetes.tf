@@ -7,6 +7,7 @@ module "eks" {
 
   enable_irsa = true
 
+
   bootstrap_self_managed_addons = false
   cluster_addons = {
     coredns                = {}
