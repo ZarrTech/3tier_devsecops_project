@@ -21,6 +21,7 @@ module "eks" {
         WARM_PREFIX_TARGET       = "1"
       }
     })
+    resolve_conflicts_on_create = "OVERWRITE"
   }
   }
 
