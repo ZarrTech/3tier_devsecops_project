@@ -24,6 +24,11 @@ resource "helm_release" "aws_load_balancer_controller" {
   value = aws_iam_role.lb_controller.arn
  }
 
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-security-groups"
+    value = aws_security_group.eks_ingress.id
+  }
+
   # Ensure the IAM role is created before the Helm release
   depends_on = [
     aws_iam_role.lb_controller,
