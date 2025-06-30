@@ -28,21 +28,14 @@ module "eks" {
 
   # Optional
   cluster_endpoint_public_access = true
-  cluster_endpoint_private_access = true
 
   # Optional: Adds the current caller identity as an administrator via cluster access entry
   enable_cluster_creator_admin_permissions = true
-  cluster_enabled_log_types = [
-    "api",
-    "audit",
-    "authenticator",
-    "controllerManager",
-    "scheduler"
-  ]
+  cluster_enabled_log_types = []
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
-  control_plane_subnet_ids = module.vpc.private_subnets
+  control_plane_subnet_ids = module.vpc.public_subnets
 
 
   eks_managed_node_group_defaults = {

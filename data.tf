@@ -1,9 +1,11 @@
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
+  depends_on = [ module.eks ]
 }
 
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_name
+  depends_on = [ module.eks ]
 }
 
 data "aws_ami" "amiID" {
@@ -20,10 +22,6 @@ data "aws_ami" "amiID" {
   }
 
   owners = ["099720109477"]
-}
-
-data "aws_secretsmanager_secret_version" "grafana_password" {
-  secret_id = "grafana-admin-password"
 }
 
 

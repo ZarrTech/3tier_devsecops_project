@@ -4,7 +4,7 @@ terraform {
     organization = "zarrAI" 
 
     workspaces { 
-      name = "3tier" 
+      name = "SRE" 
     } 
   } 
 }
